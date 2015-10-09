@@ -13,3 +13,13 @@
 5. `작업중`에서 끝마친 일에 대한 결과물을 [현 저장소의 위키페이지](https://github.com/teamwangsimni/flying-flea-on-wangsimni/wiki)에 올린 후 `완료` 리스트로 옮깁니다.
 
 6. **1** 로 돌아갑니다.
+
+
+# 링크
+* [프로젝트 트렐로 보드]
+* [프로젝트 저장소]
+* [프로젝트 위키]
+
+[프로젝트 트렐로 보드]: https://trello.com/b/dhSjIcEa/flying-flea-on-wangsimni
+[프로젝트 저장소]: https://github.com/teamwangsimni/flying-flea-on-wangsimni
+[프로젝트 위키]: https://github.com/teamwangsimni/flying-flea-on-wangsimni/wiki
