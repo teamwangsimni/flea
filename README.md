@@ -19,7 +19,9 @@
 * [프로젝트 트렐로 보드]
 * [프로젝트 저장소]
 * [프로젝트 위키]
+* [프로젝트 Slack]
 
 [프로젝트 트렐로 보드]: https://trello.com/b/dhSjIcEa/flying-flea-on-wangsimni
 [프로젝트 저장소]: https://github.com/teamwangsimni/flying-flea-on-wangsimni
 [프로젝트 위키]: https://github.com/teamwangsimni/flying-flea-on-wangsimni/wiki
+[프로젝트 Slack]: https://teamwangsimni.slack.com
