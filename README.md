@@ -10,6 +10,6 @@
 
 4. 문득 일이 하고 싶어 졌을 때 `해야할 일` 리스트에서 맡은 일 또는 하고싶은 일을 `작업중` 리스트로 옮긴 후 일합니다.
 
-5. `작업중`에서 끝마친 일에 대한 결과물을 현 [저장소의 위키페이지](https://github.com/teamwangsimni/flying-flea-on-wangsimni/wiki)에 올린 후 `완료` 리스트로 옮깁니다.
+5. `작업중`에서 끝마친 일에 대한 결과물을 [현 저장소의 위키페이지](https://github.com/teamwangsimni/flying-flea-on-wangsimni/wiki)에 올린 후 `완료` 리스트로 옮깁니다.
 
 6. **1** 로 돌아갑니다.
