@@ -22,6 +22,19 @@
 * [트렐로 보드]
 * [Slack]
 
+
+# 문제해결
+
+* **[트렐로 보드] 링크를 타고 들어갔지만 아무것도 보이지 않아요**:  
+
+트렐로에 가입되어 있지 않거나 아직 저희 팀에 소속되지 않은 상태입니다. 먼저 [트렐로](http://trello.com)에 가입한 후에 가입할 때 사용했던 이메일 계정을 저에게 보내주시면 팀과 프로젝트 보드에 초대해드릴게요!
+
+* **[구글 드라이브]에 공유가 안되요**:
+
+아래에 있는 링크는 보기 전용 링크입니다. 구글 이메일 계정을 저에게 보내주시면 공유해드릴게요!
+
+
+
 [트렐로 보드]: https://trello.com/b/dhSjIcEa/flying-flea-on-wangsimni
 [저장소]: https://github.com/teamwangsimni/flying-flea-on-wangsimni
 [구글 드라이브]: https://drive.google.com/folderview?id=0Bw1SGNR6SD0QRTRrX1NadlFXZk0&usp=sharing
