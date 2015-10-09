@@ -16,10 +16,10 @@
 
 
 # 링크
-* [트렐로 보드]
+* [위키]
 * [저장소]
 * [구글 드라이브]
-* [위키]
+* [트렐로 보드]
 * [Slack]
 
 [트렐로 보드]: https://trello.com/b/dhSjIcEa/flying-flea-on-wangsimni
