@@ -1,5 +1,12 @@
-# Flying Flea On Wangsimni
+# Flea
 우리는 애완용 로봇 벼룩을 만듭니다!
+
+# 소개
+1. [실행 시나리오](https://github.com/teamwangsimni/flea/wiki/실행-시나리오)  
+2. [요구사항](https://github.com/teamwangsimni/flea/wiki/요구사항)  
+3. [하드웨어 구성](https://github.com/teamwangsimni/flea/wiki/하드웨어-구성)  
+4. [소프트웨어 설계](https://github.com/teamwangsimni/flea/wiki/설계:소프트웨어)  
+5. [하드웨어 설계](https://github.com/teamwangsimni/flea/wiki/설계:하드웨어)  
 
 # 작업 흐름
 1. 해야 할 일을 생각해냅니다
