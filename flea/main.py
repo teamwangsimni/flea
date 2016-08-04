@@ -1,16 +1,20 @@
 from __future__ import print_function
 from RPi import GPIO
+from .utils import directions
+from .motor import setup_motors, drive
 
 
-DC_TL = 16
-DC_TR = 18
-DC_BL = 22
-DC_BR = 24
+MOTORS = {
+    directions.TL: 16,
+    directions.TR: 22,
+    directions.BL: 18,
+    directions.BR: 24,
+}
+
 
 
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(DC_TL, GPIO.OUT)
-    GPIO.setup(DC_TR, GPIO.OUT)
-    GPIO.setup(DC_BL, GPIO.OUT)
-    GPIO.setup(DC_BR, GPIO.OUT)
+    setup_motors(MOTORS)
+
+    # TODO: NOT IMPLEMENTED YET
