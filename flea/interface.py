@@ -1,8 +1,10 @@
-import functools
 import abc
+import functools
 from six import with_metaclass
 from tornado.ioloop import IOLoop
 from .modules.network import CommandTCPServer
+from .utils.logging import LoggingMixin
+from . import config
 
 
 
@@ -15,8 +17,8 @@ class Interface(with_metaclass(abc.ABCMeta)):
 
         """
         self.controller = controller
-        self._on_connect = on_connect or (lambda stream, address: stream, address)        
-        self._on_close = on_close or (lambda stream, address: stream, address)
+        self._on_connect = on_connect or (lambda stream, address: (stream, address))        
+        self._on_close = on_close or (lambda stream, address: (stream, address))
 
     @abc.abstractmethod
     def serve(self, *args, **kwargs):
@@ -25,22 +27,28 @@ class Interface(with_metaclass(abc.ABCMeta)):
         raise NotImplementedError
 
     def _on_command(self, command):
-        self.controller.run(command)
+        self.controller.feed(command)
 
 
-class TCPInterface(Interface):
+class TCPInterface(LoggingMixin, Interface):
     def __init__(self, controller, on_connect=None, on_close=None):
-        super().__init__(*args, **kwargs)
+        super().__init__(
+            controller=controller, 
+            on_connect=on_connect, 
+            on_close=on_close
+        )
         self.server = CommandTCPServer(
             on_connect=self._on_connect,
             on_close=self._on_close,
             on_command=self._on_command)
 
-    def serve(self, port):
+    def serve(self, port=config.INTERFACE_PORT):
+        self.log('Listening at port {}'.format(port))
+        self.server.listen(port)
         IOLoop.current().start()
 
 
-class BluetoothInterface(Interface):
+class BluetoothInterface(LoggingMixin, Interface):
     def serve(self, port):
         # TODO: NOT IMPLEMENTED YET
         pass

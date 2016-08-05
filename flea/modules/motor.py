@@ -7,6 +7,6 @@ def setup_motors(motors):
         GPIO.setup(p, GPIO.OUT)
 
 
-def drive(motors, direction):
+def drive(motors, direction, speed=1):
     # TODO: NOT IMPLEMENTED YET
     pass
