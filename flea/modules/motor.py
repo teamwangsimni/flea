@@ -36,7 +36,6 @@ def drive(motors, direction, speed=1):
         drive_motor(p1, config.CMP_DIR_HORIZONTAL_WEIGHT * speed)
         drive_motor(p2, config.CMP_DIR_HORIZONTAL_OPPOSITE_WEIGHT * speed)
         stop_motors_except_for(motors, (p1, p2))
-
     # ELEMENTARY DIRECTION (VERTICAL)
     elif direction.is_vertical:
         p1 = motors[direction + directions.LEFT]

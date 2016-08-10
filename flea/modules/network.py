@@ -28,7 +28,6 @@ class CommandTCPServer(LoggingMixin, TCPServer):
                 tag='warning'
             )
 
-
     def receive(self, data):
         try:
             command = Command.parse(data)
