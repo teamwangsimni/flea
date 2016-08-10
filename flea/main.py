@@ -1,20 +1,12 @@
-from __future__ import print_function
-from RPi import GPIO
-from .utils import directions
-from .motor import setup_motors, drive
+from . import Flea, config
+from .controller import Controller
+from .interface import TCPInterface
 
 
-MOTORS = {
-    directions.TL: 16,
-    directions.TR: 22,
-    directions.BL: 18,
-    directions.BR: 24,
-}
-
+controller = Controller(config.MOTORS)
+interface = TCPInterface(controller)
+flea = Flea(controller, interface)
 
 
 if __name__ == '__main__':
-    GPIO.setmode(GPIO.BOARD)
-    setup_motors(MOTORS)
-
-    # TODO: NOT IMPLEMENTED YET
+    flea.start()

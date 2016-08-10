@@ -9,15 +9,28 @@ from . import config
 
 class Controller(LoggingMixin):
     def __init__(self, motors):
+        """Controlls all internal modules of the flea robot via a 
+        command queue and it's consumer thread.
+
+        :param motors: A dictionary of motor definitions with direction keys
+            and GPIO number values.
+        :type motors: :class:`~dict`
+
+        """
         self._motors = motors
         self._commands = Queue(maxsize=config.COMMAND_QUEUE_SIZE)
         self._thread = None
         self._running = False
+
     
     def start(self):
+        """Setup modules and start a command queue comsumer thread."""
         if self._thread and self._running:
             self.log('Already running in other thread. Ignoring!', tag='error')
             return
+
+        self.log('Setting up motors')
+        motor.setup_motors(motors)
 
         self._running = True
         self._thread = self._create_consumer_thread()
@@ -25,10 +38,15 @@ class Controller(LoggingMixin):
         self.log('Started a new consumer thread')
 
     def stop(self):
+        """Cleanup modules and stop currently running consumer thread."""
         self.log('Stopping the consumer thread')
         self._running = False
 
+        self.log('Cleaning up motors')
+        motor.cleanup_motors(motors)
+
     def feed(self, command):
+        """Feed a command into the command queue of the controller."""
         try:
             self._commands.put(
                 command, 
@@ -43,6 +61,7 @@ class Controller(LoggingMixin):
             self.log('Command queue full. Ignoring the command', tag='warning')
 
     def consume(self):
+        """Consume a command from the command queue of the controller."""
         try:
             self._run(self._commands.get(
                 timeout=config.COMMAND_QUEUE_CONSUME_TIMEOUT
