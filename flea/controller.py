@@ -3,6 +3,7 @@ from queue import Queue, Empty, Full
 from threading import Thread
 from .utils.logging import LoggingMixin
 from .utils.directions import Direction
+from .modules import motor
 from . import config
 
 
@@ -43,7 +44,7 @@ class Controller(LoggingMixin):
 
     def consume(self):
         try:
-            self.run(self._commands.get(
+            self._run(self._commands.get(
                 timeout=config.COMMAND_QUEUE_CONSUME_TIMEOUT
             ))
         except Empty:
@@ -52,7 +53,7 @@ class Controller(LoggingMixin):
 
     def _run(self, command):
         self.log('Running {} with data {}'.format(command.name, command.data))
-        method = getattr(self, '__{}'.format(command.name))
+        method = getattr(self, '__{}__'.format(command.name))
         method(command.data)
 
     def _consume_forever(self):
@@ -79,15 +80,15 @@ class Controller(LoggingMixin):
     # Commands
     # ========
 
-    def __drive(self, data):
+    def __drive__(self, data):
         direction = Direction(data['direction'])
         speed = data['speed']
-        # TODO: NOT IMPLEMENTED YET
+        motor.drive(self._motors, direction, speed)
 
-    def __jump(self, data):
+    def __jump__(self, data):
         # TODO: NOT IMPLEMENTED YET
         pass
 
-    def __track(self, data):
+    def __track__(self, data):
         # TODO: NOT IMPLEMENTED YET
         pass

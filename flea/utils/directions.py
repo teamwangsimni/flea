@@ -14,11 +14,13 @@ class Direction(object):
 
     # A tuple of composite direction names
     __TOP_LEFT__, __TOP_RIGHT__, __BOTTOM_LEFT__, __BOTTOM_RIGHT__ = \
-        __COMPOSITE_DIRECTIONS__ =  \
+        __COMPOSITE_DIRECTIONS__ = \
         ('TOP_LEFT', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_RIGHT')
 
     # A tuple of valid direction names
     __DIRECTIONS__ = __ELEMENTARY_DIRECTIONS__ + __COMPOSITE_DIRECTIONS__
+    __HORIZONTAL__ = (__LEFT__, __RIGHT)
+    __VERTICAL__ = (__TOP__, __BOTTOM__)
 
     # Direction composition relationships
     __COMPOSITION__ = {
@@ -33,6 +35,16 @@ class Direction(object):
         frozenset([__BOTTOM__, __RIGHT__]): __BOTTOM_RIGHT__,
     }
     __REVERSED_COMPOSITION__ = {v: k for k, v in __COMPOSITION__.items()}
+
+    # Negation relationships
+    __NEGATIONS__ = {
+        __TOP__: __BOTTOM__, 
+        __LEFT__: __RIGHT__,
+        __TOP_LEFT__: __BOTTOM_RIGHT__,
+        __TOP_RIGHT__: __BOTTOM_LEFT__,
+        __NONE__: __NONE__,
+    }
+    __NEGATIONS__.update({v: k for k, v in __NEGATIONS__.items()})
 
     def __init__(self, *directions):
         """Initializes direction instance from a source.
@@ -67,6 +79,9 @@ class Direction(object):
 
     def __sub__(self, x):
         return Direction(*self.directions.difference(x.directions))
+
+    def __neg__(self):
+        return Direction(self.__NEGATIONS__[self.name])
 
     def __str__(self):
         return 'Direction {}'.format(self.name)
@@ -103,18 +118,42 @@ class Direction(object):
     def name(self):
         return self.__COMPOSITION__[self.directions]
 
+    @property
+    def vertical(self):
+        for d in self.directions:
+            if d in self.__VERTICAL__:
+                return Direction(d)
+
+    @property
+    def horizontal(self):
+        for d in self.directions:
+            if d in self.__HORIZONTAL__:
+                return Direction(d)
+
+    @property
+    def is_vertical(self):
+        return len(self.directions) == 1 and self.vertical
+
+    @property
+    def is_horizontal(self):
+        return len(self, directions) == 1 and self.horizontal
+
+    @property
+    def is_composite(self):
+        return len(self.directions) >= 2
+
 
 # ==========
 # Directions
 # ==========
 
-TOP = T = Direction('TOP')
-BOTTOM = B = Direction('BOTTOM')
-LEFT = L = Direction('LEFT')
-RIGHT = R = Direction('RIGHT')
-NONE = N = Direction('NONE')
+TOP = Direction('TOP')
+BOTTOM = Direction('BOTTOM')
+LEFT = Direction('LEFT')
+RIGHT = Direction('RIGHT')
+NONE = Direction('NONE')
 
-TOP_LEFT = TL = Direction('TOP_LEFT')
-TOP_RIGHT = TR = Direction('TOP_RIGHT')
-BOTTOM_LEFT = BL = Direction('BOTTOM_LEFT')
-BOTTOM_RIGHT = BR = Direction('BOTTOM_RIGHT')
+TOP_LEFT = Direction('TOP_LEFT')
+TOP_RIGHT = Direction('TOP_RIGHT')
+BOTTOM_LEFT = Direction('BOTTOM_LEFT')
+BOTTOM_RIGHT = Direction('BOTTOM_RIGHT')
