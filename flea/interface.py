@@ -18,7 +18,6 @@ class Interface(with_metaclass(abc.ABCMeta)):
         """
         self._on_connect = on_connect or (lambda stream, address: (stream, address))        
         self._on_close = on_close or (lambda stream, address: (stream, address))
-        self.controller = None
         self.server = None
 
     @abc.abstractmethod
